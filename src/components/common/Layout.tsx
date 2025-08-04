@@ -1,168 +1,89 @@
-import type { ReactNode, MouseEvent } from 'react';
-import { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
+import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import MuiDrawer, { drawerClasses } from '@mui/material/Drawer';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import SelectContent from "./menu/SelectContent";
+import MenuContent from './menu/MenuContent';
+import CardAlert from './menu/CardAlert';
+import OptionsMenu from './menu/./OptionsMenu';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const drawerWidth = 240;
 
-const Layout = ({ children }: { children: ReactNode }) => {
-    const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+const Drawer = styled(MuiDrawer)({
+  width: drawerWidth,
+  flexShrink: 0,
+  boxSizing: 'border-box',
+  mt: 10,
+  [`& .${drawerClasses.paper}`]: {
+    width: drawerWidth,
+    boxSizing: 'border-box',
+  },
+});
 
-    const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-      };
-      const handleOpenUserMenu = (event: MouseEvent<HTMLElement>) => {
-        setAnchorElUser(event.currentTarget);
-      };
-    
-      const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-      };
-    
-      const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-      };
+const Layout = () => {
 
-
-    return (
-        <>
-        <div>
-        <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
+  return (
+    <Drawer
+      variant="permanent"
+      sx={{
+        display: { xs: 'none', md: 'block' },
+        [`& .${drawerClasses.paper}`]: {
+          backgroundColor: 'background.paper',
+        },
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          mt: 'calc(var(--template-frame-height, 0px) + 4px)',
+          p: 1.5,
+        }}
+      >
+        <SelectContent />
+      </Box>
+      <Divider />
+      <Box
+        sx={{
+          overflow: 'auto',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <MenuContent />
+        <CardAlert />
+      </Box>
+      <Stack
+        direction="row"
+        sx={{
+          p: 2,
+          gap: 1,
+          alignItems: 'center',
+          borderTop: '1px solid',
+          borderColor: 'divider',
+        }}
+      >
+        <Avatar
+          sizes="small"
+          alt="Riley Carter"
+          src="/static/images/avatar/7.jpg"
+          sx={{ width: 36, height: 36 }}
+        />
+        <Box sx={{ mr: 'auto' }}>
+          <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '16px' }}>
+            Riley Carter
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
+          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+            riley@email.com
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-            {children}
-        </div>
-        </>
-    )
-
-}
+        </Box>
+        <OptionsMenu />
+      </Stack>
+    </Drawer>
+  );
+};
 
 export default Layout;
