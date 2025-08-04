@@ -29,37 +29,41 @@ function App(props: { disableCustomTheme?: boolean }) {
       <AppTheme {...props} themeComponents={xThemeComponents}>
         <CssBaseline enableColorScheme />
         <AuthProvider>
-          <Layout />
-          <AppNavbar />
-          <Box
-            component="main"
-            sx={(theme) => ({
-              flexGrow: 1,
-              backgroundColor: theme.vars
-                ? `rgba(${theme.vars.palette.background.defaultChannel} / 1)`
-                : alpha(theme.palette.background.default, 1),
-              overflow: 'auto',
-            })}
-          >
-            <Stack
-              spacing={2}
-              sx={{
-                alignItems: "center",
-                mx: 3,
-                pb: 5,
-                mt: { xs: 8, md: 0 },
-              }}
-            >
-              <Header />
-            </Stack>
-          </Box>
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/login" element={<h1>Login Page</h1>} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
+            <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+              <Layout />
+              <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+                <AppNavbar />
+                <Box
+                  component="main"
+                  sx={(theme) => ({
+                    flexGrow: 1,
+                    backgroundColor: theme.vars
+                      ? `rgba(${theme.vars.palette.background.defaultChannel} / 1)`
+                      : alpha(theme.palette.background.default, 1),
+                    overflow: 'auto',
+                  })}
+                >
+                  <Stack
+                    spacing={2}
+                    sx={{
+                      alignItems: "center",
+                      mx: 3,
+                      pb: 5,
+                      mt: { xs: 8, md: 0 },
+                    }}
+                  >
+                    <Header />
+                  </Stack>
+                  <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/login" element={<h1>Login Page</h1>} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                </Box>
+              </Box>
+            </Box>
           </BrowserRouter>
         </AuthProvider>
       </AppTheme>
