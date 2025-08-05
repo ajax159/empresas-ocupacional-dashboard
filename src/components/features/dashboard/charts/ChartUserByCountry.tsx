@@ -8,42 +8,43 @@ import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import { IndiaFlag,
-  UsaFlag,
-  BrazilFlag,
-  GlobeFlag, } from '../../../../internals/components/CustomIcons';
+// import { IndiaFlag,
+//   UsaFlag,
+//   BrazilFlag,
+//   GlobeFlag, } from '../../../../internals/components/CustomIcons';
+import WorkIcon from '@mui/icons-material/Work';
 
 
 const data = [
-  { label: 'India', value: 50000 },
-  { label: 'USA', value: 35000 },
-  { label: 'Brazil', value: 10000 },
-  { label: 'Other', value: 5000 },
+  { label: 'Operario', value: 50000 },
+  { label: 'Tecnico', value: 35000 },
+  { label: 'Operador PIT', value: 10000 },
+  { label: 'Otros', value: 5000 },
 ];
 
 const countries = [
   {
-    name: 'India',
+    name: 'Operario',
     value: 50,
-    flag: <IndiaFlag />,
+    flag: <WorkIcon />,
     color: 'hsl(220, 25%, 65%)',
   },
   {
-    name: 'USA',
+    name: 'Tecnico',
     value: 35,
-    flag: <UsaFlag />,
+    flag: <WorkIcon />,
     color: 'hsl(220, 25%, 45%)',
   },
   {
-    name: 'Brazil',
+    name: 'Operador PIT',
     value: 10,
-    flag: <BrazilFlag />,
+    flag: <WorkIcon />,
     color: 'hsl(220, 25%, 30%)',
   },
   {
-    name: 'Other',
+    name: 'Otros',
     value: 5,
-    flag: <GlobeFlag />,
+    flag: <WorkIcon />,
     color: 'hsl(220, 25%, 20%)',
   },
 ];
@@ -127,7 +128,7 @@ export default function ChartUserByCountry() {
     >
       <CardContent>
         <Typography component="h2" variant="subtitle2">
-          Users by country
+          Puestos de trabajo más comunes
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <PieChart

@@ -2,56 +2,56 @@ import Avatar from '@mui/material/Avatar';
 import Chip from '@mui/material/Chip';
 import type { GridColDef } from '@mui/x-data-grid';
 import type { GridCellParams, GridRowsProp } from '@mui/x-data-grid';
-import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
+// import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
 
-type SparkLineData = number[];
+// type SparkLineData = number[];
 
-function getDaysInMonth(month: number, year: number) {
-  const date = new Date(year, month, 0);
-  const monthName = date.toLocaleDateString('en-US', {
-    month: 'short',
-  });
-  const daysInMonth = date.getDate();
-  const days = [];
-  let i = 1;
-  while (days.length < daysInMonth) {
-    days.push(`${monthName} ${i}`);
-    i += 1;
-  }
-  return days;
-}
+// function getDaysInMonth(month: number, year: number) {
+//   const date = new Date(year, month, 0);
+//   const monthName = date.toLocaleDateString('en-US', {
+//     month: 'short',
+//   });
+//   const daysInMonth = date.getDate();
+//   const days = [];
+//   let i = 1;
+//   while (days.length < daysInMonth) {
+//     days.push(`${monthName} ${i}`);
+//     i += 1;
+//   }
+//   return days;
+// }
 
-function renderSparklineCell(params: GridCellParams<SparkLineData, unknown>) {
-  const data = getDaysInMonth(4, 2024);
-  const { value, colDef } = params;
+// function renderSparklineCell(params: GridCellParams<SparkLineData, unknown>) {
+//   const data = getDaysInMonth(4, 2024);
+//   const { value, colDef } = params;
 
-  if (!value || !Array.isArray(value) || value.length === 0) {
-    return null;
-  }
+//   if (!value || !Array.isArray(value) || value.length === 0) {
+//     return null;
+//   }
 
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-      <SparkLineChart
-        data={value}
-        width={colDef.computedWidth || 100}
-        height={32}
-        plotType="bar"
-        showHighlight
-        showTooltip
-        color="hsl(210, 98%, 42%)"
-        xAxis={{
-          scaleType: 'band',
-          data,
-        }}
-      />
-    </div>
-  );
-}
+//   return (
+//     <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+//       <SparkLineChart
+//         data={value}
+//         width={colDef.computedWidth || 100}
+//         height={32}
+//         plotType="bar"
+//         showHighlight
+//         showTooltip
+//         color="hsl(210, 98%, 42%)"
+//         xAxis={{
+//           scaleType: 'band',
+//           data,
+//         }}
+//       />
+//     </div>
+//   );
+// }
 
-function renderStatus(status: 'Online' | 'Offline') {
+function renderStatus(status: 'Activo' | 'Inactivo') {
   const colors: { [index: string]: 'success' | 'default' } = {
-    Online: 'success',
-    Offline: 'default',
+    Activo: 'success',
+    Inactivo: 'default',
   };
 
   return <Chip label={status} color={colors[status]} size="small" />;
@@ -85,17 +85,17 @@ export function renderAvatar(
 }
 
 export const columns: GridColDef[] = [
-  { field: 'pageTitle', headerName: 'Page Title', flex: 1.5, minWidth: 200 },
+  { field: 'pageTitle', headerName: 'Nombres', flex: 1.5, minWidth: 200 },
   {
     field: 'status',
-    headerName: 'Status',
+    headerName: 'Estado',
     flex: 0.5,
     minWidth: 80,
-    renderCell: (params) => renderStatus(params.value as 'Online' | 'Offline'),
+    renderCell: (params) => renderStatus(params.value as 'Activo' | 'Inactivo'),
   },
   {
     field: 'users',
-    headerName: 'Users',
+    headerName: 'Atenciones',
     headerAlign: 'right',
     align: 'right',
     flex: 1,
@@ -103,7 +103,7 @@ export const columns: GridColDef[] = [
   },
   {
     field: 'eventCount',
-    headerName: 'Event Count',
+    headerName: 'Restricciones',
     headerAlign: 'right',
     align: 'right',
     flex: 1,
@@ -111,7 +111,7 @@ export const columns: GridColDef[] = [
   },
   {
     field: 'viewsPerUser',
-    headerName: 'Views per User',
+    headerName: 'Calificacion',
     headerAlign: 'right',
     align: 'right',
     flex: 1,
@@ -119,18 +119,11 @@ export const columns: GridColDef[] = [
   },
   {
     field: 'averageTime',
-    headerName: 'Average Time',
+    headerName: 'Tiempo en la empresa',
     headerAlign: 'right',
     align: 'right',
     flex: 1,
     minWidth: 100,
-  },
-  {
-    field: 'conversions',
-    headerName: 'Daily Conversions',
-    flex: 1,
-    minWidth: 150,
-    renderCell: renderSparklineCell,
   },
 ];
 
@@ -138,7 +131,7 @@ export const rows: GridRowsProp = [
   {
     id: 1,
     pageTitle: 'Homepage Overview',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 8345,
     users: 212423,
     viewsPerUser: 18.5,
@@ -153,7 +146,7 @@ export const rows: GridRowsProp = [
   {
     id: 2,
     pageTitle: 'Product Details - Gadgets',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 5653,
     users: 172240,
     viewsPerUser: 9.7,
@@ -166,7 +159,7 @@ export const rows: GridRowsProp = [
   {
     id: 3,
     pageTitle: 'Checkout Process - Step 1',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 3455,
     users: 58240,
     viewsPerUser: 15.2,
@@ -181,7 +174,7 @@ export const rows: GridRowsProp = [
   {
     id: 4,
     pageTitle: 'User Profile Dashboard',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 112543,
     users: 96240,
     viewsPerUser: 4.5,
@@ -196,7 +189,7 @@ export const rows: GridRowsProp = [
   {
     id: 5,
     pageTitle: 'Article Listing - Tech News',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 3653,
     users: 142240,
     viewsPerUser: 3.1,
@@ -211,7 +204,7 @@ export const rows: GridRowsProp = [
   {
     id: 6,
     pageTitle: 'FAQs - Customer Support',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 106543,
     users: 15240,
     viewsPerUser: 7.2,
@@ -225,7 +218,7 @@ export const rows: GridRowsProp = [
   {
     id: 7,
     pageTitle: 'Product Comparison - Laptops',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 7853,
     users: 32240,
     viewsPerUser: 6.5,
@@ -239,7 +232,7 @@ export const rows: GridRowsProp = [
   {
     id: 8,
     pageTitle: 'Shopping Cart - Electronics',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 8563,
     users: 48240,
     viewsPerUser: 4.3,
@@ -254,7 +247,7 @@ export const rows: GridRowsProp = [
   {
     id: 9,
     pageTitle: 'Payment Confirmation - Bank Transfer',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 4563,
     users: 18240,
     viewsPerUser: 2.7,
@@ -268,7 +261,7 @@ export const rows: GridRowsProp = [
   {
     id: 10,
     pageTitle: 'Product Reviews - Smartphones',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 9863,
     users: 28240,
     viewsPerUser: 5.1,
@@ -283,7 +276,7 @@ export const rows: GridRowsProp = [
   {
     id: 11,
     pageTitle: 'Subscription Management - Services',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 6563,
     users: 24240,
     viewsPerUser: 4.8,
@@ -298,7 +291,7 @@ export const rows: GridRowsProp = [
   {
     id: 12,
     pageTitle: 'Order Tracking - Shipments',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 12353,
     users: 38240,
     viewsPerUser: 3.5,
@@ -313,7 +306,7 @@ export const rows: GridRowsProp = [
   {
     id: 13,
     pageTitle: 'Customer Feedback - Surveys',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 5863,
     users: 13240,
     viewsPerUser: 2.3,
@@ -327,7 +320,7 @@ export const rows: GridRowsProp = [
   {
     id: 14,
     pageTitle: 'Account Settings - Preferences',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 7853,
     users: 18240,
     viewsPerUser: 3.2,
@@ -341,7 +334,7 @@ export const rows: GridRowsProp = [
   {
     id: 15,
     pageTitle: 'Login Page - Authentication',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 9563,
     users: 24240,
     viewsPerUser: 2.5,
@@ -356,7 +349,7 @@ export const rows: GridRowsProp = [
   {
     id: 16,
     pageTitle: 'Promotions - Seasonal Sales',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 13423,
     users: 54230,
     viewsPerUser: 7.8,
@@ -370,7 +363,7 @@ export const rows: GridRowsProp = [
   {
     id: 17,
     pageTitle: 'Tutorials - How to Guides',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 4234,
     users: 19342,
     viewsPerUser: 5.2,
@@ -384,7 +377,7 @@ export const rows: GridRowsProp = [
   {
     id: 18,
     pageTitle: 'Blog Posts - Tech Insights',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 8567,
     users: 34234,
     viewsPerUser: 6.3,
@@ -398,7 +391,7 @@ export const rows: GridRowsProp = [
   {
     id: 19,
     pageTitle: 'Events - Webinars',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 3456,
     users: 19234,
     viewsPerUser: 4.5,
@@ -412,7 +405,7 @@ export const rows: GridRowsProp = [
   {
     id: 20,
     pageTitle: 'Support - Contact Us',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 6734,
     users: 27645,
     viewsPerUser: 3.9,
@@ -426,7 +419,7 @@ export const rows: GridRowsProp = [
   {
     id: 21,
     pageTitle: 'Case Studies - Success Stories',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 4567,
     users: 19345,
     viewsPerUser: 6.1,
@@ -440,7 +433,7 @@ export const rows: GridRowsProp = [
   {
     id: 22,
     pageTitle: 'News - Industry Updates',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 7856,
     users: 34567,
     viewsPerUser: 5.7,
@@ -454,7 +447,7 @@ export const rows: GridRowsProp = [
   {
     id: 23,
     pageTitle: 'Forum - User Discussions',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 5678,
     users: 23456,
     viewsPerUser: 4.2,
@@ -468,7 +461,7 @@ export const rows: GridRowsProp = [
   {
     id: 24,
     pageTitle: 'Documentation - API Reference',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 6789,
     users: 27689,
     viewsPerUser: 5.0,
@@ -482,7 +475,7 @@ export const rows: GridRowsProp = [
   {
     id: 25,
     pageTitle: 'Services - Consulting',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 4563,
     users: 19240,
     viewsPerUser: 6.4,
@@ -496,7 +489,7 @@ export const rows: GridRowsProp = [
   {
     id: 26,
     pageTitle: 'Feedback - User Reviews',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 8564,
     users: 34240,
     viewsPerUser: 6.2,
@@ -510,7 +503,7 @@ export const rows: GridRowsProp = [
   {
     id: 27,
     pageTitle: 'Profiles - Team Members',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 5634,
     users: 23423,
     viewsPerUser: 5.5,
@@ -524,7 +517,7 @@ export const rows: GridRowsProp = [
   {
     id: 28,
     pageTitle: 'Notifications - Alerts',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 6745,
     users: 27654,
     viewsPerUser: 4.9,
@@ -539,7 +532,7 @@ export const rows: GridRowsProp = [
   {
     id: 29,
     pageTitle: 'Dashboard - Metrics',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 5678,
     users: 23456,
     viewsPerUser: 6.3,
@@ -554,7 +547,7 @@ export const rows: GridRowsProp = [
   {
     id: 30,
     pageTitle: 'Reports - Monthly Analysis',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 7890,
     users: 34567,
     viewsPerUser: 5.9,
@@ -569,7 +562,7 @@ export const rows: GridRowsProp = [
   {
     id: 31,
     pageTitle: 'Training - Employee Onboarding',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 3456,
     users: 19234,
     viewsPerUser: 6.1,
@@ -584,7 +577,7 @@ export const rows: GridRowsProp = [
   {
     id: 32,
     pageTitle: 'Resources - Knowledge Base',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 5678,
     users: 23456,
     viewsPerUser: 4.7,
@@ -599,7 +592,7 @@ export const rows: GridRowsProp = [
   {
     id: 33,
     pageTitle: 'Settings - Privacy Controls',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 6789,
     users: 27689,
     viewsPerUser: 5.8,
@@ -614,7 +607,7 @@ export const rows: GridRowsProp = [
   {
     id: 34,
     pageTitle: 'Integrations - Third-Party Services',
-    status: 'Online',
+    status: 'Activo',
     eventCount: 4567,
     users: 19345,
     viewsPerUser: 4.4,
@@ -628,7 +621,7 @@ export const rows: GridRowsProp = [
   {
     id: 35,
     pageTitle: 'Account - Billing Information',
-    status: 'Offline',
+    status: 'Inactivo',
     eventCount: 7890,
     users: 34567,
     viewsPerUser: 5.4,

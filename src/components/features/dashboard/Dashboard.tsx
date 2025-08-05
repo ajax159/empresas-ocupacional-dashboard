@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Copyright from '../../../internals/components/Copyright';
 import ChartUserByCountry from './charts/ChartUserByCountry';
-import CustomizedTreeView from './charts/CustomizedTreeView';
+//import CustomizedTreeView from './charts/CustomizedTreeView';
 import CustomizedDataGrid from './charts/CustomizedDataGrid';
 import HighlightedCard from './charts/HighlightedCard';
 import PageViewsBarChart from './charts/PageViewsBarChart';
@@ -14,9 +14,9 @@ import type { StatCardProps } from './charts/StatCard';
 
 const data: StatCardProps[] = [
   {
-    title: 'Users',
+    title: 'Trabajadores activos',
     value: '14k',
-    interval: 'Last 30 days',
+    interval: 'Ultimos 30 dias',
     trend: 'up',
     data: [
       200, 24, 220, 260, 240, 380, 100, 240, 280, 240, 300, 340, 320, 360, 340, 380,
@@ -24,9 +24,9 @@ const data: StatCardProps[] = [
     ],
   },
   {
-    title: 'Conversions',
+    title: 'Trabajadores inactivos',
     value: '325',
-    interval: 'Last 30 days',
+    interval: 'Ultimos 30 dias',
     trend: 'down',
     data: [
       1640, 1250, 970, 1130, 1050, 900, 720, 1080, 900, 450, 920, 820, 840, 600, 820,
@@ -34,9 +34,9 @@ const data: StatCardProps[] = [
     ],
   },
   {
-    title: 'Event count',
+    title: 'Interconsultas generadas',
     value: '200k',
-    interval: 'Last 30 days',
+    interval: 'Ultimos 30 dias',
     trend: 'neutral',
     data: [
       500, 400, 510, 530, 520, 600, 530, 520, 510, 730, 520, 510, 530, 620, 510, 530,
@@ -74,7 +74,7 @@ export default function Dashboard() {
         </Grid>
       </Grid>
       <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
-        Details
+        Trabajadores
       </Typography>
       <Grid container spacing={2} columns={12}>
         <Grid size={{ xs: 12, lg: 9 }}>
@@ -82,7 +82,6 @@ export default function Dashboard() {
         </Grid>
         <Grid size={{ xs: 12, lg: 3 }}>
           <Stack gap={2} direction={{ xs: 'column', sm: 'row', lg: 'column' }}>
-            <CustomizedTreeView />
             <ChartUserByCountry />
           </Stack>
         </Grid>

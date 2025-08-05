@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import SelectContent from '../common/menu/SelectContent';
 import MenuContent from '../common/menu/MenuContent';
-import CardAlert from '../common/menu/CardAlert';
+//import CardAlert from '../common/menu/CardAlert';
 import OptionsMenu from '../common/menu/./OptionsMenu';
 
 const drawerWidth = 240;
@@ -54,7 +54,6 @@ const Layout = () => {
         }}
       >
         <MenuContent />
-        <CardAlert />
       </Box>
       <Stack
         direction="row"
