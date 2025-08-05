@@ -2,8 +2,8 @@ import Stack from '@mui/material/Stack';
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import CustomDatePicker from './content/CustomDatePicker';
 import NavbarBreadcrumbs from './content/NavbarBreadcrumbs';
-import MenuButton from '../common/menu/MenuButton';
-import ColorModeIconDropdown from '../../theme/ColorModeIconDropdown';
+import MenuButton from '../../common/menu/MenuButton';
+import ColorModeIconDropdown from '../../../theme/ColorModeIconDropdown';
 import Search from './content/Search';
 
 export default function Header() {

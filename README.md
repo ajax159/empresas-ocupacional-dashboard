@@ -1,69 +1,110 @@
-# React + TypeScript + Vite
+# 📊 Dashboard de Empresas Ocupacional
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un dashboard moderno y responsive construido con React 19, TypeScript y Material-UI v7.
 
-Currently, two official plugins are available:
+## 🚀 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡ **React 19** con las últimas características
+- 🔷 **TypeScript** con configuración estricta
+- 🎨 **Material-UI v7** para componentes modernos
+- 📊 **Material-UI X** para gráficos y data grids avanzados
+- 🏃‍♂️ **Vite** para desarrollo rápido
+- 🧭 **React Router v7** para navegación
+- 🎭 **ESLint** con reglas estrictas
+- 📱 **Responsive Design**
 
-## Expanding the ESLint configuration
+## 📁 Estructura del Proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/           # Componentes React organizados por tipo
+│   ├── features/        # Componentes por característica (dashboard, etc.)
+│   ├── layout/          # Componentes de layout (Header, Sidebar, etc.)
+│   ├── ui/              # Componentes UI reutilizables
+│   └── index.ts         # Barrel exports
+├── contexts/            # React Contexts
+│   ├── AuthContext.tsx
+│   └── AuthContext.context.ts
+├── hooks/               # Custom hooks reutilizables
+│   ├── useAuth.ts
+│   ├── useLocalStorage.ts
+│   ├── useDebounce.ts
+│   └── index.ts
+├── lib/                 # Configuraciones de librerías externas
+│   └── axios.ts
+├── pages/               # Componentes de páginas principales
+│   ├── DashboardPage.tsx
+│   ├── LoginPage.tsx
+│   └── index.ts
+├── services/            # Servicios y llamadas a APIs
+│   └── api.js
+├── theme/               # Configuración de temas y estilos
+│   ├── AppTheme.tsx
+│   └── customizations/
+├── types/               # Definiciones de tipos TypeScript
+│   └── index.ts
+├── utils/               # Funciones utilitarias
+│   └── index.ts
+└── App.tsx             # Componente principal
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Scripts Disponibles
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Desarrollo
+npm run dev          # Inicia el servidor de desarrollo
+npm start           # Alias para npm run dev
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build
+npm run build       # Construye para producción
+npm run preview     # Previsualiza el build de producción
+
+# Calidad de código
+npm run lint        # Ejecuta ESLint
+npm run lint:fix    # Ejecuta ESLint y corrige errores automáticamente
+npm run type-check  # Verifica tipos de TypeScript sin generar archivos
+
+# Utilidades
+npm run clean       # Limpia archivos de build
 ```
+
+## 🔧 Configuración de Desarrollo
+
+### Prerrequisitos
+- Node.js >= 18
+- npm >= 9
+
+### Instalación
+
+```bash
+# Clonar el repositorio
+git clone [url-del-repo]
+cd empresas-ocupacional-dashboard
+
+# Instalar dependencias
+npm install
+
+# Iniciar desarrollo
+npm run dev
+```
+
+## 🎨 Personalización de Tema
+
+El proyecto incluye un sistema de temas personalizable usando Material-UI.
+
+## 📊 Componentes del Dashboard
+
+### Gráficos y Visualizaciones
+- **StatCard** - Tarjetas de estadísticas con sparklines
+- **SessionsChart** - Gráfico de sesiones por tiempo
+- **PageViewsBarChart** - Gráfico de barras de vistas de página
+- **ChartUserByCountry** - Gráfico de usuarios por país
+- **CustomizedDataGrid** - Tabla de datos avanzada
+
+## 🔐 Autenticación
+
+Sistema de autenticación con Context API y hooks personalizados.
+
+---
+
+Construido con ❤️ usando tecnologías modernas

@@ -8,8 +8,8 @@ import { tabsClasses } from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
-import SideMenuMobile from './menu/SideMenuMobile';
-import MenuButton from './menu/MenuButton';
+import SideMenuMobile from '../common/menu/SideMenuMobile';
+import MenuButton from '../common/menu/MenuButton';
 import ColorModeIconDropdown from '../../theme/ColorModeIconDropdown';
 
 const Toolbar = styled(MuiToolbar)({

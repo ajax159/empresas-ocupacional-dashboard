@@ -4,10 +4,9 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import { alpha } from '@mui/material/styles';
-import Dashboard from "./components/dashboard/Dashboard";
-import Layout from "./components/common/Layout";
-import AppNavbar from "./components/common/AppNavbar";
-import Header from "./components/dashboard/Header";
+import { DashboardPage, LoginPage } from "./pages";
+import { Layout, AppNavbar } from "./components";
+import Header from "./components/features/dashboard/Header";
 import AppTheme from "./theme/AppTheme";
 import {
   chartsCustomizations,
@@ -42,6 +41,9 @@ function App(props: { disableCustomTheme?: boolean }) {
                       ? `rgba(${theme.vars.palette.background.defaultChannel} / 1)`
                       : alpha(theme.palette.background.default, 1),
                     overflow: 'auto',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
                   })}
                 >
                   <Stack
@@ -51,16 +53,27 @@ function App(props: { disableCustomTheme?: boolean }) {
                       mx: 3,
                       pb: 5,
                       mt: { xs: 8, md: 0 },
+                      width: '100%',
+                      maxWidth: { sm: '100%', md: '1700px' },
                     }}
                   >
                     <Header />
                   </Stack>
-                  <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/login" element={<h1>Login Page</h1>} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="*" element={<Navigate to="/" replace />} />
-                  </Routes>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      px: 3,
+                    }}
+                  >
+                    <Routes>
+                      <Route path="/" element={<DashboardPage />} />
+                      <Route path="/login" element={<LoginPage />} />
+                      <Route path="/dashboard" element={<DashboardPage />} />
+                      <Route path="*" element={<Navigate to="/" replace />} />
+                    </Routes>
+                  </Box>
                 </Box>
               </Box>
             </Box>

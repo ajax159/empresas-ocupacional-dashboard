@@ -1,40 +1,47 @@
-import { createContext, useContext, useState } from 'react';
+import { useState } from 'react';
 import type { ReactNode } from 'react';
-
-interface AuthContextType {
-  user: string | null;
-  login: (username: string) => void;
-  logout: () => void;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+import type { User } from '../types';
+import { AuthContext } from './AuthContext.context';
+import type { AuthContextType } from './AuthContext.context';
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const login = (username: string) => {
-    setUser(username);
+    setIsLoading(true);
+    // Simular delay de autenticación
+    setTimeout(() => {
+      const newUser: User = {
+        id: '1',
+        name: username,
+        email: `${username.toLowerCase().replace(' ', '.')}@empresa.com`,
+        role: 'user'
+      };
+      setUser(newUser);
+      setIsLoading(false);
+    }, 500);
   };
 
   const logout = () => {
     setUser(null);
   };
 
+  const value: AuthContextType = {
+    user,
+    isAuthenticated: !!user,
+    isLoading,
+    login,
+    logout,
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
-};
-
-export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
 };
