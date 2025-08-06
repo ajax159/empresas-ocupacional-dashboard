@@ -1,20 +1,18 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import HistorialAtenciones from '../components/features/atenciones/HistorialAtenciones';
-import HistorialChart from '../components/features/atenciones/HistorialChart';
+import AtencionesTiempoReal from '../components/features/atenciones/AtencionesTiempoReal';
 
-
-export default function Atenciones() {
-
+export default function AtencionesdelDia() {
+    
     return (
         <Box sx={{ width: '100%' }}>
             <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
-                Atenciones
+                Atenciones del Día
             </Typography>
             <Grid container spacing={2} columns={12} sx={{ mb: (theme) => theme.spacing(2) }}>
                 <Grid size={{ xs: 12, lg: 12 }}>
-                    <HistorialAtenciones />
+                    <AtencionesTiempoReal />
                 </Grid>
             </Grid>
             <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
@@ -22,7 +20,7 @@ export default function Atenciones() {
             </Typography>
             <Grid container spacing={2} columns={12} sx={{ mb: (theme) => theme.spacing(2) }}>
                 <Grid size={{ xs: 12 }}>
-                        <HistorialChart />
+                        
                 </Grid>
             </Grid>
         </Box>

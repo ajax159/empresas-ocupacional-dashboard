@@ -4,21 +4,19 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import { alpha } from '@mui/material/styles';
-import { DashboardPage, LoginPage } from "./pages";
+import { DashboardPage, LoginPage, Atenciones, AtencionesdelDia } from "./pages";
 import { Layout, AppNavbar } from "./components";
 import Header from "./components/features/dashboard/Header";
 import AppTheme from "./theme/AppTheme";
 import {
   chartsCustomizations,
   dataGridCustomizations,
-  datePickersCustomizations,
   treeViewCustomizations,
 } from './theme/customizations';
 
 const xThemeComponents = {
   ...chartsCustomizations,
   ...dataGridCustomizations,
-  ...datePickersCustomizations,
   ...treeViewCustomizations,
 };
 
@@ -71,6 +69,8 @@ function App(props: { disableCustomTheme?: boolean }) {
                       <Route path="/" element={<DashboardPage />} />
                       <Route path="/login" element={<LoginPage />} />
                       <Route path="/dashboard" element={<DashboardPage />} />
+                      <Route path="/atenciones" element={<Atenciones />} />
+                      <Route path="/atenciones-del-dia" element={<AtencionesdelDia />} />
                       <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                   </Box>
