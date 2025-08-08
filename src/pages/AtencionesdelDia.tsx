@@ -17,7 +17,7 @@ export default function AtencionesdelDia() {
                 </Grid>
             </Grid>
             <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
-                Tiempo de recorrido de Atenciones
+                Tiempo de recorrido
             </Typography>
             <Grid container spacing={2} columns={12} sx={{ mb: (theme) => theme.spacing(2) }}>
                 <Grid size={{ xs: 12 }}>
