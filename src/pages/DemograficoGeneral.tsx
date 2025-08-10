@@ -13,6 +13,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { Dayjs } from 'dayjs';
 import Edades from '../components/features/demografico/Edades';
 import Sexo from '../components/features/demografico/Sexo';
+import AntiguedadPromedio from '../components/features/demografico/AntiguedadPromedio';
 
 export default function DemograficoGeneral() {
     const [fechaInicio, setFechaInicio] = useState<Dayjs | undefined>(undefined);
@@ -95,6 +96,14 @@ export default function DemograficoGeneral() {
                     <Sexo />
                 </Grid>
             </Grid>
+                        <Grid container
+                spacing={2}
+                columns={12}
+                sx={{ mb: (theme) => theme.spacing(2) }}>
+                    <Grid size={{ xs: 12, md: 6 }}>
+                        <AntiguedadPromedio />
+                    </Grid>
+                </Grid>
         </Box>
     )
 }
