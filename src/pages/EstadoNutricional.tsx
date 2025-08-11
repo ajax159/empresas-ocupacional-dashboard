@@ -11,11 +11,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { Dayjs } from 'dayjs';
-import Edades from '../components/features/demografico/Edades';
-import Sexo from '../components/features/demografico/Sexo';
-import AntiguedadPromedio from '../components/features/demografico/AntiguedadPromedio';
+import { ClasificacionIMC, PromedioLipidos, PorcentajeDislipidemia, TendenciaPeso } from '../components/features/nutricional';
 
-export default function DemograficoGeneral() {
+export default function EstadoNutricional() {
+
     const [fechaInicio, setFechaInicio] = useState<Dayjs | undefined>(undefined);
     const [fechaFin, setFechaFin] = useState<Dayjs | undefined>(undefined);
 
@@ -90,10 +89,10 @@ export default function DemograficoGeneral() {
                 columns={12}
                 sx={{ mb: (theme) => theme.spacing(2) }}>
                 <Grid size={{ xs: 12, md: 6 }}>
-                    <Edades />
+                    <ClasificacionIMC />
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
-                    <Sexo />
+                    <PromedioLipidos />
                 </Grid>
             </Grid>
             <Grid container
@@ -101,9 +100,17 @@ export default function DemograficoGeneral() {
                 columns={12}
                 sx={{ mb: (theme) => theme.spacing(2) }}>
                 <Grid size={{ xs: 12, md: 12 }}>
-                    <AntiguedadPromedio />
+                    <PorcentajeDislipidemia />
                 </Grid>
             </Grid>
-        </Box>
+            <Grid container
+                spacing={2}
+                columns={12}
+                sx={{ mb: (theme) => theme.spacing(2) }}>
+                <Grid size={{ xs: 12, md: 12 }}>
+                    <TendenciaPeso />
+                </Grid>
+            </Grid>
+        </Box >
     )
 }

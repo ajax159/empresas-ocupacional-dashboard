@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import { alpha } from '@mui/material/styles';
-import { DashboardPage, LoginPage, Atenciones, AtencionesdelDia, DemograficoGeneral } from "./pages";
+import { DashboardPage, LoginPage, Atenciones, AtencionesdelDia, DemograficoGeneral, EstadoNutricional } from "./pages";
 import { Layout, AppNavbar } from "./components";
 import Header from "./components/features/dashboard/Header";
 import AppTheme from "./theme/AppTheme";
@@ -72,6 +72,7 @@ function App(props: { disableCustomTheme?: boolean }) {
                       <Route path="/atenciones" element={<Atenciones />} />
                       <Route path="/atenciones-del-dia" element={<AtencionesdelDia />} />
                       <Route path="/demografico" element={<DemograficoGeneral />} />
+                      <Route path="/nutricional" element={<EstadoNutricional />} />
                       <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                   </Box>

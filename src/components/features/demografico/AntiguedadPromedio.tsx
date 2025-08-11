@@ -1,15 +1,15 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-export default function AntiguedadPromedio () {
+export default function AntiguedadPromedio() {
     const chartSetting = {
-    xAxis: [
-        {
-        label: 'Antiguedad promedio (años)',
-        },
-    ],
-    height: 400,
-    margin: { left: 0 },
+        xAxis: [
+            {
+                label: 'Antiguedad promedio (años)',
+            },
+        ],
+        height: 400,
+        margin: { left: 0 },
     };
 
 
@@ -22,19 +22,19 @@ export default function AntiguedadPromedio () {
     ];
 
     return (
-<Card variant="outlined" sx={{ width: '100%' }}>
-    <CardContent>
+        <Card variant="outlined" sx={{ width: '100%' }}>
+            <CardContent>
                 <Typography component="h2" variant="subtitle2" gutterBottom>
                     Antigüedad promedio en la empresa
                 </Typography>
-                    <BarChart
+                <BarChart
                     dataset={dataSet}
-                    yAxis={[{ scaleType: 'band', dataKey: 'antiguedad' }]}
+                    yAxis={[{ width: 100, scaleType: 'band', dataKey: 'puesto' }]}
                     series={[{ dataKey: 'cantidad', label: 'Cantidad de empleados' }]}
                     layout="horizontal"
                     {...chartSetting}
-                    />
-                </CardContent>
-</Card>
+                />
+            </CardContent>
+        </Card>
     )
 }
