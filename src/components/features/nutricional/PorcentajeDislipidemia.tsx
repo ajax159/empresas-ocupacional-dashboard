@@ -3,7 +3,7 @@ import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import { Gauge } from '@mui/x-charts/Gauge';
 
 export default function PorcentajeDislipidemia() {
-    // Datos de dislipidemia
+
     const dislipidemiaData = [
         { id: 0, label: 'Normal', value: 65, color: '#4caf50' },
         { id: 1, label: 'Colesterol Alto', value: 20, color: '#ff9800' },
@@ -11,10 +11,9 @@ export default function PorcentajeDislipidemia() {
         { id: 3, label: 'Mixta (Ambos)', value: 5, color: '#9c27b0' }
     ];
 
-    // Porcentajes específicos
-    const colesterolAlto = 25; // 20% + 5% mixta
-    const trigliceridosAltos = 15; // 10% + 5% mixta
-    const dislipidemiaTotal = 35; // Total con algún tipo de dislipidemia
+    const colesterolAlto = 25;
+    const trigliceridosAltos = 15;
+    const dislipidemiaTotal = 35;
 
     return (
         <Card variant="outlined" sx={{ width: '100%' }}>
@@ -24,7 +23,6 @@ export default function PorcentajeDislipidemia() {
                 </Typography>
 
                 <Grid container spacing={3}>
-                    {/* Gráfico principal de distribución */}
                     <Grid size={{ xs: 12, md: 8 }} >
                         <Box sx={{ height: 300 }}>
                             <PieChart
@@ -53,10 +51,8 @@ export default function PorcentajeDislipidemia() {
                         </Box>
                     </Grid>
 
-                    {/* Indicadores específicos */}
                     <Grid size={{ xs: 12, md: 4 }}>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, height: '100%', justifyContent: 'center' }}>
-                            {/* Gauge para colesterol alto */}
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, height: '100%', justifyContent: 'center', alignItems: 'center' }}>
                             <Box>
                                 <Typography variant="body2" fontWeight="medium" gutterBottom>
                                     Colesterol Alto
@@ -77,7 +73,6 @@ export default function PorcentajeDislipidemia() {
                                 />
                             </Box>
 
-                            {/* Gauge para triglicéridos altos */}
                             <Box>
                                 <Typography variant="body2" fontWeight="medium" gutterBottom>
                                     Triglicéridos Altos
@@ -98,7 +93,6 @@ export default function PorcentajeDislipidemia() {
                                 />
                             </Box>
 
-                            {/* Indicador total */}
                             <Box sx={{ textAlign: 'center', p: 2, bgcolor: 'primary.main', color: 'white', borderRadius: 1 }}>
                                 <Typography variant="body2">
                                     Total con Dislipidemia

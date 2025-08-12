@@ -58,24 +58,27 @@ export default function PromedioLipidos() {
                     }]}
                     series={[
                         {
+                            label: 'Óptimo',
                             data: lipidosData.map(item => item.optimo),
                             color: '#4caf50'
                         },
                         {
+                            label: 'Límite',
                             data: lipidosData.map(item => item.limite),
                             color: '#ff9800'
                         },
                         {
+                            label: 'Alto',
                             data: lipidosData.map(item => item.alto),
                             color: '#f44336'
                         },
                         {
+                            label: 'Muy Alto',
                             data: lipidosData.map(item => item.muy_alto),
                             color: '#9c27b0'
                         }
                     ]}
                     height={300}
-                    margin={{ left: 60, right: 20, top: 20, bottom: 80 }}
                     slotProps={{
                         legend: {
                             position: { vertical: 'bottom' },

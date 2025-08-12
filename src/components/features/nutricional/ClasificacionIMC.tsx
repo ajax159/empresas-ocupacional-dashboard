@@ -24,35 +24,39 @@ export default function ClasificacionIMC() {
                             scaleType: 'band',
                             data: grupos
                         }]}
+                        slotProps={{
+                            legend: {
+                                direction: 'horizontal',
+                                position: { vertical: 'bottom' },
+                            }
+                        }}
                         series={[
                             {
+                                label: 'Normal (18.5-24.9)',
                                 data: imcData.map(item => item.normal),
                                 stack: 'total',
                                 color: '#4caf50'
                             },
                             {
+                                label: 'Sobrepeso (25-29.9)',
                                 data: imcData.map(item => item.sobrepeso),
                                 stack: 'total',
                                 color: '#ff9800'
                             },
                             {
+                                label: 'Obesidad I (30-34.9)',
                                 data: imcData.map(item => item.obesidadI),
                                 stack: 'total',
                                 color: '#f44336'
                             },
                             {
+                                label: 'Obesidad II (35+)',
                                 data: imcData.map(item => item.obesidadII),
                                 stack: 'total',
                                 color: '#9c27b0'
                             }
                         ]}
                         height={350}
-                        margin={{ left: 60, right: 20, top: 20, bottom: 60 }}
-                        slotProps={{
-                            legend: {
-                                position: { vertical: 'bottom' },
-                            },
-                        }}
                     />
                 </Box>
                 <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
