@@ -4,7 +4,23 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import { alpha } from '@mui/material/styles';
-import { DashboardPage, LoginPage, Atenciones, AtencionesdelDia, DemograficoGeneral, EstadoNutricional, VisualYAuditiva } from "./pages";
+import {
+  DashboardPage,
+  LoginPage,
+  Atenciones,
+  AtencionesdelDia,
+  DemograficoGeneral,
+  EstadoNutricional,
+  VisualYAuditiva,
+  Osteomuscular,
+  Mapas,
+  Aptitud,
+  CardioyRespiratorio,
+  ReportesPage,
+  ConfiguracionPage,
+  AboutPage,
+  HelpPage
+} from "./pages";
 import { Layout, AppNavbar } from "./components";
 import Header from "./components/features/dashboard/Header";
 import AppTheme from "./theme/AppTheme";
@@ -74,6 +90,14 @@ function App(props: { disableCustomTheme?: boolean }) {
                       <Route path="/demografico" element={<DemograficoGeneral />} />
                       <Route path="/nutricional" element={<EstadoNutricional />} />
                       <Route path="/visual-auditiva" element={<VisualYAuditiva />} />
+                      <Route path="/osteomuscular" element={<Osteomuscular />} />
+                      <Route path="/cardioyrespiratorio" element={<CardioyRespiratorio />} />
+                      <Route path="/mapas" element={<Mapas />} />
+                      <Route path="/aptitud" element={<Aptitud />} />
+                      <Route path="/reportes" element={<ReportesPage />} />
+                      <Route path="/configuracion" element={<ConfiguracionPage />} />
+                      <Route path="/about" element={<AboutPage />} />
+                      <Route path="/help" element={<HelpPage />} />
                       <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                   </Box>
