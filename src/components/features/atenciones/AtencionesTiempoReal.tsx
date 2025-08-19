@@ -120,7 +120,7 @@ export default function AtencionesTiempoReal() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-    const handleChangePage = (event: unknown, newPage: number) => {
+    const handleChangePage = (_: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
         setPage(newPage);
     };
 
@@ -129,7 +129,6 @@ export default function AtencionesTiempoReal() {
         setPage(0);
     };
 
-    // Calcular las filas a mostrar en la página actual
     const paginatedRows = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
     return (

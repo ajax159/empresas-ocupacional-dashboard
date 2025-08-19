@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material/styles';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -61,9 +61,8 @@ const currentYear = dayjs();
 
 
 export default function TiempoAtencionChart() {
-  const theme = useTheme();
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(dayjs());
-  const [state, setState] = useState({
+  const [state] = useState({
     options: {
       chart: {
         id: "basic-bar"
