@@ -14,3 +14,4 @@ export { default as ReportesPage } from './ReportesPage';
 export { default as ConfiguracionPage } from './ConfiguracionPage';
 export { default as AboutPage } from './AboutPage';
 export { default as HelpPage } from './HelpPage';
+export { default as PacientePerfil } from './PacientePerfil';

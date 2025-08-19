@@ -2,7 +2,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Stack from '@mui/material/Stack';
 import { alpha } from '@mui/material/styles';
 import {
   DashboardPage,
@@ -19,7 +18,8 @@ import {
   ReportesPage,
   ConfiguracionPage,
   AboutPage,
-  HelpPage
+  HelpPage,
+  PacientePerfil
 } from "./pages";
 import { Layout, AppNavbar } from "./components";
 import Header from "./components/features/dashboard/Header";
@@ -60,27 +60,17 @@ function App(props: { disableCustomTheme?: boolean }) {
                     alignItems: 'center',
                   })}
                 >
-                  <Stack
-                    spacing={2}
-                    sx={{
-                      alignItems: "center",
-                      mx: 3,
-                      pb: 5,
-                      mt: { xs: 8, md: 0 },
-                      width: '100%',
-                      maxWidth: { sm: '100%', md: '1700px' },
-                    }}
-                  >
-                    <Header />
-                  </Stack>
                   <Box
                     sx={{
                       width: '100%',
                       display: 'flex',
+                      flexDirection: 'column',
                       justifyContent: 'center',
                       px: 3,
                     }}
                   >
+                    <Header />
+
                     <Routes>
                       <Route path="/" element={<DashboardPage />} />
                       <Route path="/login" element={<LoginPage />} />
@@ -94,6 +84,7 @@ function App(props: { disableCustomTheme?: boolean }) {
                       <Route path="/cardioyrespiratorio" element={<CardioyRespiratorio />} />
                       <Route path="/mapas" element={<Mapas />} />
                       <Route path="/aptitud" element={<Aptitud />} />
+                      <Route path="/paciente" element={<PacientePerfil />} />
                       <Route path="/reportes" element={<ReportesPage />} />
                       <Route path="/configuracion" element={<ConfiguracionPage />} />
                       <Route path="/about" element={<AboutPage />} />
