@@ -12,18 +12,12 @@ const trabajadorEjemplo = {
     direccion: 'Av. Lima 123, San Isidro, Lima',
     email: 'juan.perez@empresa.com',
     puesto: 'Ingeniero de Sistemas',
-    empresa: 'TechCorp S.A.C.',
+    fechadenacimiento: '1990-05-15',
     estado: 'Activo' as const,
+    sexo: 'M' as const
 };
 
 export default function HeaderPerfil() {
-    const handlePhotoChange = (file: File) => {
-        console.log('Nueva foto seleccionada:', file.name);
-    };
-
-    const handleEdit = () => {
-        console.log('Editar información del trabajador');
-    };
 
     return (
         <Container maxWidth="lg" sx={{ py: 3 }}>
@@ -43,19 +37,15 @@ export default function HeaderPerfil() {
                     }}
                 >
                     <Foto
-                        src="" 
+                        src=""
                         alt={`Foto de ${trabajadorEjemplo.nombres} ${trabajadorEjemplo.apellidos}`}
                         size="large"
-                        editable={true}
-                        onPhotoChange={handlePhotoChange}
                     />
                 </Box>
 
                 <Box sx={{ flex: 1, width: '100%' }}>
                     <InformacionBasica
                         trabajador={trabajadorEjemplo}
-                        editable={true}
-                        onEdit={handleEdit}
                     />
                 </Box>
             </Box>

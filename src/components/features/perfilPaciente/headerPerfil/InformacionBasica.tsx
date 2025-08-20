@@ -13,6 +13,9 @@ import {
     LocationOn,
     Email,
     Business,
+    Cake,
+    Male,
+    Female
 } from '@mui/icons-material';
 
 interface TrabajadorInfo {
@@ -24,8 +27,9 @@ interface TrabajadorInfo {
     direccion: string;
     email: string;
     puesto?: string;
-    empresa?: string;
+    fechadenacimiento?: string;
     estado?: 'Activo' | 'Inactivo' | 'Suspendido';
+    sexo?: string;
 }
 
 interface InformacionBasicaProps {
@@ -95,6 +99,9 @@ export default function InformacionBasica({
                         }}
                     >
                         {nombreCompleto}
+                        {
+                            trabajador.sexo === 'M' ? <Male fontSize="small" color="primary" sx={{ ml: 0.5 }} /> : <Female fontSize="small" color="primary" sx={{ ml: 0.5 }} />
+                        }
                     </Typography>
                     {trabajador.puesto && (
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
@@ -140,11 +147,11 @@ export default function InformacionBasica({
                         label="Correo Electrónico"
                         value={trabajador.email}
                     />
-                    {trabajador.empresa && (
+                    {trabajador.fechadenacimiento && (
                         <InfoItem
-                            icon={<Business fontSize="small" />}
-                            label="Empresa"
-                            value={trabajador.empresa}
+                            icon={<Cake fontSize="small" />}
+                            label="Fecha de Nacimiento"
+                            value={trabajador.fechadenacimiento}
                         />
                     )}
                 </Grid>

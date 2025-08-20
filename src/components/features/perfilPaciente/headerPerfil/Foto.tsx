@@ -5,14 +5,12 @@ interface FotoProps {
     src?: string;
     alt?: string;
     size?: 'small' | 'medium' | 'large';
-    editable?: boolean;
-    onPhotoChange?: (file: File) => void;
 }
 
 const sizeMap = {
     small: 60,
     medium: 80,
-    large: 120,
+    large: 220,
 };
 
 export default function Foto({
@@ -43,6 +41,7 @@ export default function Foto({
                     borderColor: 'primary.main',
                     boxShadow: 2,
                 }}
+                variant="rounded"
             >
                 {!src && <Person sx={{ fontSize: avatarSize * 0.6 }} />}
             </Avatar>
