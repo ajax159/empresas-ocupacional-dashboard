@@ -5,3 +5,10 @@ export { default as Antecedentes } from './Antecedentes';
 export { default as Laboratorio } from './Laboratorio';
 export { default as Oftalmologia } from './Oftalmologia';
 export { default as Cardiologia } from './Cardiologia';
+export { default as Espirometria } from './Espirometria';
+export { default as Osteomuscular } from './Osteomuscular';
+export { default as Psicologia } from './Psicologia';
+export { default as Odontologia } from './Odontologia';
+export { default as Radiologia } from './Radiologia';
+export { default as Audiometria } from './Audiometria';
+export { default as Dashboard } from './Dashboard'

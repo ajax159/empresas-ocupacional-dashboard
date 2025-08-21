@@ -1,7 +1,15 @@
 import { Box, Paper, Typography, FormControl, InputLabel, Select, MenuItem, Chip, Stack } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
-import { HeaderPerfil, Interconsulta, FichaMedica, Antecedentes, Laboratorio, Oftalmologia, Cardiologia } from '../components/features/perfilPaciente';
+import {
+    HeaderPerfil,
+    Interconsulta,
+    FichaMedica,
+    Antecedentes,
+    Laboratorio,
+    Oftalmologia,
+    Cardiologia, Espirometria, Osteomuscular, Psicologia, Odontologia, Radiologia, Audiometria, Dashboard
+} from '../components/features/perfilPaciente';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -46,7 +54,6 @@ export default function PacientePerfil() {
         { id: 10, label: 'Audiometría', color: 'warning' },
         { id: 11, label: 'Psicología', color: 'error' },
         { id: 12, label: 'Odontología', color: 'primary' },
-        { id: 13, label: 'COVID', color: 'secondary' },
     ] as const;
 
     const handleSectionChange = (event: SelectChangeEvent<number>) => {
@@ -131,8 +138,7 @@ export default function PacientePerfil() {
             </Paper>
             <Paper sx={{ p: 3, minHeight: 400 }}>
                 <TabPanel value={selectedSection} index={0}>
-                    <Typography variant="h6" gutterBottom>Dashboard</Typography>
-                    <Typography>Contenido del Dashboard</Typography>
+                    <Dashboard />
                 </TabPanel>
                 <TabPanel value={selectedSection} index={1}>
                     <Interconsulta />
@@ -153,32 +159,22 @@ export default function PacientePerfil() {
                     <Cardiologia />
                 </TabPanel>
                 <TabPanel value={selectedSection} index={7}>
-                    <Typography variant="h6" gutterBottom>Espirometría</Typography>
-                    <Typography>Contenido de Espirometría</Typography>
+                    <Espirometria />
                 </TabPanel>
                 <TabPanel value={selectedSection} index={8}>
-                    <Typography variant="h6" gutterBottom>Osteomuscular</Typography>
-                    <Typography>Contenido de Osteomuscular</Typography>
+                    <Osteomuscular />
                 </TabPanel>
                 <TabPanel value={selectedSection} index={9}>
-                    <Typography variant="h6" gutterBottom>Radiología</Typography>
-                    <Typography>Contenido de Radiología</Typography>
+                    <Radiologia />
                 </TabPanel>
                 <TabPanel value={selectedSection} index={10}>
-                    <Typography variant="h6" gutterBottom>Audiometría</Typography>
-                    <Typography>Contenido de Audiometría</Typography>
+                    <Audiometria />
                 </TabPanel>
                 <TabPanel value={selectedSection} index={11}>
-                    <Typography variant="h6" gutterBottom>Psicología</Typography>
-                    <Typography>Contenido de Psicología</Typography>
+                    <Psicologia />
                 </TabPanel>
                 <TabPanel value={selectedSection} index={12}>
-                    <Typography variant="h6" gutterBottom>Odontología</Typography>
-                    <Typography>Contenido de Odontología</Typography>
-                </TabPanel>
-                <TabPanel value={selectedSection} index={13}>
-                    <Typography variant="h6" gutterBottom>COVID</Typography>
-                    <Typography>Contenido de COVID</Typography>
+                    <Odontologia />
                 </TabPanel>
             </Paper>
         </Box>
