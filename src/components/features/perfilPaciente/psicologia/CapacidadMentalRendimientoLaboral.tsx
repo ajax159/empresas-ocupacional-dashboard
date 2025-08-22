@@ -1,109 +1,107 @@
-import { Card, CardContent, Typography, Box, Grid } from '@mui/material';
-import { LineChart } from '@mui/x-charts/LineChart';
-
-const capacidadMentalData = [
-    { año: 2020, atencion: 85, memoria: 88, concentracion: 82, procesamiento: 80, flexibilidad: 78 },
-    { año: 2021, atencion: 83, memoria: 86, concentracion: 80, procesamiento: 78, flexibilidad: 76 },
-    { año: 2022, atencion: 78, memoria: 82, concentracion: 75, procesamiento: 73, flexibilidad: 72 },
-    { año: 2023, atencion: 75, memoria: 80, concentracion: 72, procesamiento: 70, flexibilidad: 68 },
-    { año: 2024, atencion: 80, memoria: 84, concentracion: 78, procesamiento: 76, flexibilidad: 74 }
-];
-
-const rendimientoLaboralData = [
-    { año: 2020, productividad: 92, calidad: 88, eficiencia: 85, creatividad: 80, satisfaccion: 85 },
-    { año: 2021, productividad: 90, calidad: 86, eficiencia: 83, creatividad: 78, satisfaccion: 82 },
-    { año: 2022, productividad: 85, calidad: 80, eficiencia: 78, creatividad: 72, satisfaccion: 75 },
-    { año: 2023, productividad: 82, calidad: 78, eficiencia: 75, creatividad: 70, satisfaccion: 72 },
-    { año: 2024, productividad: 88, calidad: 84, eficiencia: 82, creatividad: 76, satisfaccion: 80 }
-];
-
+import { Card, CardContent, Typography, Box, Grid, Chip } from '@mui/material';
+import { BarChart } from '@mui/x-charts/BarChart';
+import { diagnosticosPorAnoData, resumenDiagnosticosData } from '../../../../mock/psicologia.mock';
+import { getDataSource } from '../../../../mock/config';
 
 export default function CapacidadMentalRendimientoLaboral() {
-    const años = capacidadMentalData.map(item => item.año);
-    const atencion = capacidadMentalData.map(item => item.atencion);
-    const memoria = capacidadMentalData.map(item => item.memoria);
-    const concentracion = capacidadMentalData.map(item => item.concentracion);
+    const diagnosticosData = getDataSource(diagnosticosPorAnoData);
+    const resumenData = getDataSource(resumenDiagnosticosData);
+    const años = diagnosticosData.map((item: { año: number }) => item.año);
+    const maxDiagnosticos = Math.max(...diagnosticosData.map((item: { diagnosticos: string[] }) => item.diagnosticos.length));
 
-    const productividad = rendimientoLaboralData.map(item => item.productividad);
-    const calidad = rendimientoLaboralData.map(item => item.calidad);
-    const satisfaccion = rendimientoLaboralData.map(item => item.satisfaccion);
 
     return (
         <Card sx={{ height: '100%' }}>
             <CardContent>
                 <Typography variant="h6" gutterBottom>
-                    Capacidad Mental y Rendimiento Laboral
+                    Diagnósticos Psicológicos por Año
                 </Typography>
 
                 <Grid container spacing={3}>
-                    <Grid size={6}>
+                    <Grid size={12}>
                         <Typography variant="subtitle2" gutterBottom>
-                            Evolución Capacidades Cognitivas
+                            Distribución de Diagnósticos Anuales
                         </Typography>
-                        <Box sx={{ height: 'auto' }}>
-                            <LineChart
-                                width={450}
-                                height={300}
-                                series={[
-                                    {
-                                        data: atencion,
-                                        label: 'Atención',
-                                        color: '#2196f3',
-                                        curve: 'linear'
-                                    },
-                                    {
-                                        data: memoria,
-                                        label: 'Memoria',
-                                        color: '#4caf50',
-                                        curve: 'linear'
-                                    },
-                                    {
-                                        data: concentracion,
-                                        label: 'Concentración',
-                                        color: '#ff9800',
-                                        curve: 'linear'
-                                    }
-                                ]}
-                                xAxis={[{ data: años, scaleType: 'point' }]}
-                                margin={{ top: 20, bottom: 40, left: 40, right: 10 }}
-                                grid={{ vertical: true, horizontal: true }}
+                        <Box sx={{ height: 350 }}>
+                            <BarChart
+                                width={800}
+                                height={350}
+                                series={[{
+                                    data: diagnosticosData.map((yearData: { diagnosticos: string[] }) => yearData.diagnosticos.length),
+                                    label: 'Número de Diagnósticos',
+                                    color: '#2196f3'
+                                }]}
+                                xAxis={[{
+                                    data: años,
+                                    scaleType: 'band'
+                                }]}
+                                margin={{ top: 20, bottom: 60, left: 60, right: 20 }}
+                                yAxis={[{
+                                    min: 0,
+                                    max: maxDiagnosticos + 1,
+                                    label: 'Número de Diagnósticos'
+                                }]}
                             />
                         </Box>
                     </Grid>
+                </Grid>
 
-                    <Grid size={6}>
+                <Grid container spacing={2} sx={{ mt: 2 }}>
+                    <Grid size={8}>
                         <Typography variant="subtitle2" gutterBottom>
-                            Evolución Rendimiento Laboral
+                            Detalle de Diagnósticos por Año
                         </Typography>
-                        <Box sx={{ height: 200 }}>
-                            <LineChart
-                                width={450}
-                                height={300}
-                                series={[
-                                    {
-                                        data: productividad,
-                                        label: 'Productividad',
-                                        color: '#9c27b0',
-                                        curve: 'linear'
-                                    },
-                                    {
-                                        data: calidad,
-                                        label: 'Calidad',
-                                        color: '#f44336',
-                                        curve: 'linear'
-                                    },
-                                    {
-                                        data: satisfaccion,
-                                        label: 'Satisfacción',
-                                        color: '#795548',
-                                        curve: 'linear'
-                                    }
-                                ]}
-                                xAxis={[{ data: años, scaleType: 'point' }]}
-                                margin={{ top: 20, bottom: 40, left: 40, right: 10 }}
-                                grid={{ vertical: true, horizontal: true }}
-                            />
-                        </Box>
+                        {diagnosticosData.map((yearData: { año: number; diagnosticos: string[] }, index: number) => (
+                            <Box key={index} sx={{ mb: 2, p: 2, borderRadius: 1 }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                                    <Typography variant="h6" color="primary">
+                                        Año {yearData.año}
+                                    </Typography>
+                                    <Chip
+                                        label={`${yearData.diagnosticos.length} diagnóstico${yearData.diagnosticos.length > 1 ? 's' : ''}`}
+                                        size="small"
+                                    />
+                                </Box>
+                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                                    {yearData.diagnosticos.map((diagnostico: string, diagIndex: number) => (
+                                        <Chip
+                                            key={diagIndex}
+                                            label={diagnostico}
+                                            size="small"
+                                            sx={{
+                                                color: 'white',
+                                                '&:hover': {
+                                                    backgroundColor: '#281953ff',
+                                                    opacity: 0.8
+                                                }
+                                            }}
+                                        />
+                                    ))}
+                                </Box>
+                            </Box>
+                        ))}
+                    </Grid>
+
+                    <Grid size={4}>
+                        <Typography variant="subtitle2" gutterBottom>
+                            Resumen de Diagnósticos
+                        </Typography>
+                        {resumenData.map((resumen: { diagnostico: string; frecuencia: number; años: string[] }, index: number) => (
+                            <Box key={index} sx={{ mb: 1.5, p: 1.5, borderRadius: 1 }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                                    <Typography variant="body2" sx={{ fontWeight: 'medium', fontSize: '0.8rem' }}>
+                                        {resumen.diagnostico}
+                                    </Typography>
+                                </Box>
+                                <Typography variant="caption" color="text.secondary">
+                                    Frecuencia: {resumen.frecuencia} vez{resumen.frecuencia > 1 ? 'es' : ''}
+                                </Typography>
+                                <br />
+                                <Typography variant="caption" color="text.secondary">
+                                    Años: {resumen.años.join(', ')}
+                                </Typography>
+                            </Box>
+                        ))}
                     </Grid>
                 </Grid>
             </CardContent>
