@@ -1,11 +1,10 @@
 import { Grid, Typography, Box } from '@mui/material';
-import {
-    AgudezaVisualYVisionCercana,
-    PresionOcularYCampoVisual,
-    RefraccionYProteccion,
-    EvolucionYHallazgos,
-    RiesgosYAptitud
-} from './oftalmologia/index';
+import AntecedentesOftalmologicos from './oftalmologia/AntecedentesOftalmologicos';
+import AgudezaVisualLentes from './oftalmologia/AgudezaVisualLentes';
+import ExploracionClinica from './oftalmologia/ExploracionClinica';
+import HallazgosOculares from './oftalmologia/HallazgosOculares';
+import ConclusionesObservaciones from './oftalmologia/ConclusionesObservaciones';
+import { mockDatosOftalmologicos } from '../../../mock/oftalmologia.mock';
 
 export default function Oftalmologia() {
     return (
@@ -20,23 +19,23 @@ export default function Oftalmologia() {
 
             <Grid container spacing={3}>
                 <Grid size={{ xs: 12, lg: 6 }}>
-                    <AgudezaVisualYVisionCercana />
+                    <AntecedentesOftalmologicos datos={mockDatosOftalmologicos} />
                 </Grid>
 
                 <Grid size={{ xs: 12, lg: 6 }}>
-                    <PresionOcularYCampoVisual />
+                    <AgudezaVisualLentes datos={mockDatosOftalmologicos} />
                 </Grid>
 
                 <Grid size={{ xs: 12 }}>
-                    <RefraccionYProteccion />
+                    <ExploracionClinica datos={mockDatosOftalmologicos} />
                 </Grid>
 
                 <Grid size={{ xs: 12, lg: 6 }}>
-                    <EvolucionYHallazgos />
+                    <HallazgosOculares datos={mockDatosOftalmologicos} />
                 </Grid>
 
                 <Grid size={{ xs: 12, lg: 6 }}>
-                    <RiesgosYAptitud />
+                    <ConclusionesObservaciones datos={mockDatosOftalmologicos} />
                 </Grid>
             </Grid>
         </Box>

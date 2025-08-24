@@ -1,39 +1,50 @@
 import { Grid, Typography, Box } from '@mui/material';
-import { AptitudOdontologicaLimitaciones, CalidadVidaOral, EstadoOralActual, EvolucionOralTemporal, RiesgosOcupacionalesOrales } from './odontologia/index';
+import {
+  FactoresRiesgoEvolucion,
+  CondicionesDentalesEvolucion,
+  TratamientosComparativo,
+  DiagnosticosTabla,
+  EvolucionPiezaDental,
+  EvolucionOdontograma
+} from './odontologia/index';
+import { mockDatosOdontologicos } from '../../../mock/odontologia.mock';
+import { datosOdontogramaMock } from '../../../mock/odontograma.mock';
 
 export default function Odontologia() {
+  return (
+    <Box sx={{ flexGrow: 1, p: 3 }}>
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="caption" color="text.secondary">
+          Período: {mockDatosOdontologicos.años[0]?.año} - {mockDatosOdontologicos.años[mockDatosOdontologicos.años.length - 1]?.año}
+        </Typography>
+      </Box>
 
-    return (
-        <Box>
-            <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
-                Evaluación Cardiológica Ocupacional
-            </Typography>
+      <Grid container spacing={3}>
+        <Grid size={{ xs: 12, lg: 12 }}>
+          <FactoresRiesgoEvolucion datos={mockDatosOdontologicos} />
+        </Grid>
+        
+        <Grid size={{ xs: 12, lg: 12 }}>
+          <CondicionesDentalesEvolucion datos={mockDatosOdontologicos} />
+        </Grid>
 
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                Evaluación cardiovascular integral para determinar aptitud laboral y riesgos ocupacionales
-            </Typography>
+        <Grid size={{ xs: 12, lg: 6 }}>
+          <TratamientosComparativo datos={mockDatosOdontologicos} />
+        </Grid>
+        
+        <Grid size={{ xs: 12, lg: 6 }}>
+          <EvolucionPiezaDental datos={mockDatosOdontologicos} />
+        </Grid>
 
-            <Grid container spacing={3}>
-                <Grid size={{ xs: 12, lg: 6 }}>
-                    <AptitudOdontologicaLimitaciones />
-                </Grid>
+        <Grid size={{ xs: 12, lg: 12 }}>
+          <DiagnosticosTabla datos={mockDatosOdontologicos} />
+        </Grid>
 
-                <Grid size={{ xs: 12, lg: 6 }}>
-                    <CalidadVidaOral />
-                </Grid>
+              <Grid size={{ xs: 12, lg: 12 }}>
+          <EvolucionOdontograma datos={datosOdontogramaMock} />
+        </Grid>
+      </Grid>
 
-                <Grid size={{ xs: 12 }}>
-                    <EstadoOralActual />
-                </Grid>
-
-                <Grid size={{ xs: 12, lg: 6 }}>
-                    <EvolucionOralTemporal />
-                </Grid>
-
-                <Grid size={{ xs: 12, lg: 6 }}>
-                    <RiesgosOcupacionalesOrales />
-                </Grid>
-            </Grid>
-        </Box>
-    )
+    </Box>
+  );
 }

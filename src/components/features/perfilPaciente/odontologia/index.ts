@@ -1,5 +1,6 @@
-export { default as EstadoOralActual } from './EstadoOralActual';
-export { default as EvolucionOralTemporal } from './EvolucionOralTemporal';
-export { default as RiesgosOcupacionalesOrales } from './RiesgosOcupacionalesOrales';
-export { default as CalidadVidaOral } from './CalidadVidaOral';
-export { default as AptitudOdontologicaLimitaciones } from './AptitudOdontologicaLimitaciones';
+export { default as FactoresRiesgoEvolucion } from './FactoresRiesgoEvolucion';
+export { default as CondicionesDentalesEvolucion } from './CondicionesDentalesEvolucion';
+export { default as TratamientosComparativo } from './TratamientosComparativo';
+export { default as DiagnosticosTabla } from './DiagnosticosTabla';
+export { default as EvolucionPiezaDental } from './EvolucionPiezaDental';
+export { default as EvolucionOdontograma } from './EvolucionOdontograma';

@@ -1,5 +1,5 @@
-export { default as AgudezaVisualYVisionCercana } from './AgudezaVisualYVisionCercana';
-export { default as PresionOcularYCampoVisual } from './PresionOcularYCampoVisual';
-export { default as RefraccionYProteccion } from './RefraccionYProteccion';
-export { default as EvolucionYHallazgos } from './EvolucionYHallazgos';
-export { default as RiesgosYAptitud } from './RiesgosYAptitud';
+export { default as AntecedentesOftalmologicos } from './AntecedentesOftalmologicos';
+export { default as AgudezaVisualLentes } from './AgudezaVisualLentes';
+export { default as ExploracionClinica } from './ExploracionClinica';
+export { default as HallazgosOculares } from './HallazgosOculares';
+export { default as ConclusionesObservaciones } from './ConclusionesObservaciones';
