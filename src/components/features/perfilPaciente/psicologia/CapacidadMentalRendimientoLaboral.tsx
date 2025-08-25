@@ -94,7 +94,7 @@ export default function CapacidadMentalRendimientoLaboral() {
                                     </Typography>
                                 </Box>
                                 <Typography variant="caption" color="text.secondary">
-                                    Frecuencia: {resumen.frecuencia} vez{resumen.frecuencia > 1 ? 'es' : ''}
+                                    Frecuencia: {resumen.frecuencia}
                                 </Typography>
                                 <br />
                                 <Typography variant="caption" color="text.secondary">

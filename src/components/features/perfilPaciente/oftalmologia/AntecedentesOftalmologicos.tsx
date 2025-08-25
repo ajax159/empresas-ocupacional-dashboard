@@ -59,7 +59,7 @@ export default function AntecedentesOftalmologicos({ datos }: AntecedentesOftalm
   ];
 
   const años = datos.años.map((año: EvaluacionOftalmologicaAnual) => año.año.toString());
-  
+
   const seriesOculares = [
     {
       data: datos.años.map(año => año.evaluacionOftalmologica.antecedentesOculares.glaucoma ? 1 : 0),
@@ -102,7 +102,7 @@ export default function AntecedentesOftalmologicos({ datos }: AntecedentesOftalm
         <Typography variant="h6" component="h2" gutterBottom>
           Antecedentes Oftalmológicos
         </Typography>
-        
+
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="subtitle2" gutterBottom sx={{ mb: 2 }}>
@@ -192,12 +192,12 @@ export default function AntecedentesOftalmologicos({ datos }: AntecedentesOftalm
             </Typography>
             <Box sx={{ height: 200 }}>
               <BarChart
-                xAxis={[{ 
-                  scaleType: 'band', 
+                xAxis={[{
+                  scaleType: 'band',
                   data: años,
                   tickLabelStyle: { fontSize: 12 }
                 }]}
-                yAxis={[{ 
+                yAxis={[{
                   max: 1,
                   tickLabelStyle: { fontSize: 12 },
                   valueFormatter: (value: number) => value === 1 ? 'Presente' : 'Ausente'
@@ -220,12 +220,12 @@ export default function AntecedentesOftalmologicos({ datos }: AntecedentesOftalm
             </Typography>
             <Box sx={{ height: 200 }}>
               <BarChart
-                xAxis={[{ 
-                  scaleType: 'band', 
+                xAxis={[{
+                  scaleType: 'band',
                   data: años,
                   tickLabelStyle: { fontSize: 12 }
                 }]}
-                yAxis={[{ 
+                yAxis={[{
                   max: 1,
                   tickLabelStyle: { fontSize: 12 },
                   valueFormatter: (value: number) => value === 1 ? 'Presente' : 'Ausente'
@@ -266,16 +266,6 @@ export default function AntecedentesOftalmologicos({ datos }: AntecedentesOftalm
                   color={estadoActual?.usaLentes ? 'warning' : 'default'}
                   size="small"
                 />
-              </Paper>
-
-              <Paper elevation={1} sx={{ p: 2, flex: 1, minWidth: 200 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  <MedicalIcon color="error" />
-                  <Typography variant="subtitle2">Factores de Riesgo</Typography>
-                </Box>
-                <Typography variant="h6" color="error.main">
-                  {[...antecedentesOculares, ...antecedentesSistemicos].filter(a => a.value).length}
-                </Typography>
               </Paper>
             </Box>
           </Grid>

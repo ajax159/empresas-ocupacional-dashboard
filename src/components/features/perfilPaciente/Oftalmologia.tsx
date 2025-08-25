@@ -3,7 +3,6 @@ import AntecedentesOftalmologicos from './oftalmologia/AntecedentesOftalmologico
 import AgudezaVisualLentes from './oftalmologia/AgudezaVisualLentes';
 import ExploracionClinica from './oftalmologia/ExploracionClinica';
 import HallazgosOculares from './oftalmologia/HallazgosOculares';
-import ConclusionesObservaciones from './oftalmologia/ConclusionesObservaciones';
 import { mockDatosOftalmologicos } from '../../../mock/oftalmologia.mock';
 
 export default function Oftalmologia() {
@@ -30,12 +29,8 @@ export default function Oftalmologia() {
                     <ExploracionClinica datos={mockDatosOftalmologicos} />
                 </Grid>
 
-                <Grid size={{ xs: 12, lg: 6 }}>
+                <Grid size={{ xs: 12, lg: 12 }}>
                     <HallazgosOculares datos={mockDatosOftalmologicos} />
-                </Grid>
-
-                <Grid size={{ xs: 12, lg: 6 }}>
-                    <ConclusionesObservaciones datos={mockDatosOftalmologicos} />
                 </Grid>
             </Grid>
         </Box>

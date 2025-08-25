@@ -7,6 +7,7 @@ export const API_ENDPOINTS = {
     radiologia: '/api/radiologia',
     cardiologia: '/api/cardiologia',
     espirometria: '/api/espirometria',
+    audiometria: '/api/audiometria',
     // ... otros endpoints
 };
 

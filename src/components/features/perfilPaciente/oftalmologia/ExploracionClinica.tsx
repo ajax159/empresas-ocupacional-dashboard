@@ -67,25 +67,19 @@ export default function ExploracionClinica({ datos }: ExploracionClinicaProps) {
     }
   ];
 
-  const estadisticasPruebas = {
-    testColoresNormal: datos.años.filter(año => año.evaluacionOftalmologica.pruebasComplementarias.testColores === "NORMAL").length,
-    campimetriaNormal: datos.años.filter(año => año.evaluacionOftalmologica.pruebasComplementarias.campimetria === "NORMAL").length,
-    promedioProfundidad: datos.años.reduce((acc, año) => acc + año.evaluacionOftalmologica.pruebasComplementarias.testProfundidad, 0) / datos.años.length
-  };
-
   return (
     <Card sx={{ height: '100%' }}>
       <CardContent>
         <Typography variant="h6" component="h2" gutterBottom>
           Exploración Clínica y Pruebas Complementarias
         </Typography>
-        
+
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="subtitle2" gutterBottom sx={{ mb: 2 }}>
               Pruebas Complementarias Actuales ({datos.años[datos.años.length - 1]?.año})
             </Typography>
-            
+
             <Stack spacing={2}>
               {pruebasActuales.map((prueba) => {
                 const estado = getEstadoPrueba(prueba.resultado);
@@ -138,16 +132,16 @@ export default function ExploracionClinica({ datos }: ExploracionClinicaProps) {
                   <LinearProgress
                     variant="determinate"
                     value={Math.min(100, (estadoActual?.pruebasComplementarias.testProfundidad || 0) * 2)}
-                    sx={{ 
-                      height: 8, 
+                    sx={{
+                      height: 8,
                       borderRadius: 4,
                       bgcolor: 'grey.200',
                       '& .MuiLinearProgress-bar': {
-                        bgcolor: getValorProfundidad(estadoActual?.pruebasComplementarias.testProfundidad || 0).color === 'success' 
-                          ? 'success.main' 
+                        bgcolor: getValorProfundidad(estadoActual?.pruebasComplementarias.testProfundidad || 0).color === 'success'
+                          ? 'success.main'
                           : getValorProfundidad(estadoActual?.pruebasComplementarias.testProfundidad || 0).color === 'warning'
-                          ? 'warning.main'
-                          : 'error.main'
+                            ? 'warning.main'
+                            : 'error.main'
                       }
                     }}
                   />
@@ -172,12 +166,12 @@ export default function ExploracionClinica({ datos }: ExploracionClinicaProps) {
             </Typography>
             <Box sx={{ height: 250 }}>
               <BarChart
-                xAxis={[{ 
-                  scaleType: 'band', 
+                xAxis={[{
+                  scaleType: 'band',
                   data: años,
                   tickLabelStyle: { fontSize: 12 }
                 }]}
-                yAxis={[{ 
+                yAxis={[{
                   tickLabelStyle: { fontSize: 12 },
                   min: 0,
                   max: 50
@@ -191,94 +185,6 @@ export default function ExploracionClinica({ datos }: ExploracionClinicaProps) {
                   },
                 }}
               />
-            </Box>
-          </Grid>
-
-          <Grid size={{ xs: 12 }}>
-            <Typography variant="subtitle2" gutterBottom sx={{ mb: 2 }}>
-              Resumen Estadístico de Pruebas
-            </Typography>
-            <Grid container spacing={2}>
-              <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                <Paper elevation={1} sx={{ p: 2, textAlign: 'center', bgcolor: 'success.light' }}>
-                  <Typography variant="h4" fontWeight={700} color="success.contrastText">
-                    {estadisticasPruebas.testColoresNormal}
-                  </Typography>
-                  <Typography variant="caption" color="success.contrastText">
-                    Test Colores Normal
-                  </Typography>
-                  <Typography variant="body2" color="success.contrastText">
-                    de {datos.años.length} evaluaciones
-                  </Typography>
-                </Paper>
-              </Grid>
-
-              <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                <Paper elevation={1} sx={{ p: 2, textAlign: 'center', bgcolor: 'info.light' }}>
-                  <Typography variant="h4" fontWeight={700} color="info.contrastText">
-                    {estadisticasPruebas.campimetriaNormal}
-                  </Typography>
-                  <Typography variant="caption" color="info.contrastText">
-                    Campimetría Normal
-                  </Typography>
-                  <Typography variant="body2" color="info.contrastText">
-                    de {datos.años.length} evaluaciones
-                  </Typography>
-                </Paper>
-              </Grid>
-
-              <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                <Paper elevation={1} sx={{ p: 2, textAlign: 'center', bgcolor: 'primary.light' }}>
-                  <Typography variant="h4" fontWeight={700} color="primary.contrastText">
-                    {estadisticasPruebas.promedioProfundidad.toFixed(1)}"
-                  </Typography>
-                  <Typography variant="caption" color="primary.contrastText">
-                    Promedio Profundidad
-                  </Typography>
-                  <Typography variant="body2" color="primary.contrastText">
-                    últimos {datos.años.length} años
-                  </Typography>
-                </Paper>
-              </Grid>
-
-              <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-                <Paper elevation={1} sx={{ p: 2, textAlign: 'center', bgcolor: 'secondary.light' }}>
-                  <Typography variant="h4" fontWeight={700} color="secondary.contrastText">
-                    {Math.round((estadisticasPruebas.testColoresNormal + estadisticasPruebas.campimetriaNormal) / (datos.años.length * 2) * 100)}%
-                  </Typography>
-                  <Typography variant="caption" color="secondary.contrastText">
-                    Pruebas Normales
-                  </Typography>
-                  <Typography variant="body2" color="secondary.contrastText">
-                    índice general
-                  </Typography>
-                </Paper>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid size={{ xs: 12 }}>
-            <Box sx={{ p: 2, bgcolor: 'background.default', borderRadius: 1 }}>
-              <Typography variant="subtitle2" gutterBottom>
-                Interpretación Clínica
-              </Typography>
-              <Grid container spacing={2}>
-                <Grid size={{ xs: 12, md: 4 }}>
-                  <Typography variant="body2">
-                    <strong>Visión Cromática:</strong> {estadoActual?.pruebasComplementarias.testColores === "NORMAL" ? "Sin alteraciones en la percepción de colores" : "Requiere evaluación adicional"}
-                  </Typography>
-                </Grid>
-                <Grid size={{ xs: 12, md: 4 }}>
-                  <Typography variant="body2">
-                    <strong>Campo Visual:</strong> {estadoActual?.pruebasComplementarias.campimetria === "NORMAL" ? "Campo visual completo sin defectos" : "Presencia de defectos campimétricos"}
-                  </Typography>
-                </Grid>
-                <Grid size={{ xs: 12, md: 4 }}>
-                  <Typography variant="body2">
-                    <strong>Estereopsis:</strong> {getValorProfundidad(estadoActual?.pruebasComplementarias.testProfundidad || 0).label.toLowerCase()} percepción de profundidad
-                  </Typography>
-                </Grid>
-              </Grid>
             </Box>
           </Grid>
         </Grid>

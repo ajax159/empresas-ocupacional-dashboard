@@ -12,7 +12,6 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import {
   RemoveRedEye as EyeIcon,
   Visibility as VisibilityIcon,
-  VisibilityOff as VisibilityOffIcon
 } from '@mui/icons-material';
 import type { DatosOftalmologicos, EvaluacionOftalmologicaAnual } from '../../../../mock/oftalmologia.mock';
 
@@ -118,13 +117,13 @@ export default function AgudezaVisualLentes({ datos }: AgudezaVisualLentesProps)
         <Typography variant="h6" component="h2" gutterBottom>
           Agudeza Visual y Uso de Lentes
         </Typography>
-        
+
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="subtitle2" gutterBottom sx={{ mb: 2 }}>
               Estado Actual de Agudeza Visual ({datos.años[datos.años.length - 1]?.año})
             </Typography>
-            
+
             <Grid container spacing={2}>
               <Grid size={{ xs: 6 }}>
                 <Paper elevation={1} sx={{ p: 2, textAlign: 'center' }}>
@@ -198,24 +197,6 @@ export default function AgudezaVisualLentes({ datos }: AgudezaVisualLentesProps)
                 </Paper>
               </Grid>
             </Grid>
-
-            <Box sx={{ mt: 3, p: 2, bgcolor: 'info.light', borderRadius: 1 }}>
-              <Typography variant="subtitle2" gutterBottom color="info.contrastText">
-                Visión Binocular
-              </Typography>
-              <Grid container spacing={2}>
-                <Grid size={6}>
-                  <Typography variant="body2" color="info.contrastText">
-                    <strong>Lejos:</strong> {estadoActual?.visionBinocular.lejos}
-                  </Typography>
-                </Grid>
-                <Grid size={6}>
-                  <Typography variant="body2" color="info.contrastText">
-                    <strong>Cerca:</strong> {estadoActual?.visionBinocular.cerca}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Box>
           </Grid>
 
           <Grid size={{ xs: 12, md: 6 }}>
@@ -271,32 +252,6 @@ export default function AgudezaVisualLentes({ datos }: AgudezaVisualLentesProps)
                   },
                 }}
               />
-            </Box>
-          </Grid>
-
-          <Grid size={{ xs: 12 }}>
-            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-              <Paper elevation={1} sx={{ p: 2, flex: 1, minWidth: 150 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  {estadoActual?.usaLentes ? <VisibilityIcon color="warning" /> : <VisibilityOffIcon color="success" />}
-                  <Typography variant="subtitle2">Uso de Lentes</Typography>
-                </Box>
-                <Chip
-                  label={estadoActual?.usaLentes ? 'Requiere Corrección' : 'Sin Corrección'}
-                  color={estadoActual?.usaLentes ? 'warning' : 'success'}
-                  size="small"
-                />
-              </Paper>
-
-              <Paper elevation={1} sx={{ p: 2, flex: 1, minWidth: 150 }}>
-                <Typography variant="subtitle2" gutterBottom>Corrección con Lentes</Typography>
-                <Typography variant="body2">
-                  <strong>Lejos:</strong> {estadoActual?.agudezaVisual.lejos.conCorreccion.OD} / {estadoActual?.agudezaVisual.lejos.conCorreccion.OI}
-                </Typography>
-                <Typography variant="body2">
-                  <strong>Cerca:</strong> {estadoActual?.agudezaVisual.cerca.conCorreccion.OD} / {estadoActual?.agudezaVisual.cerca.conCorreccion.OI}
-                </Typography>
-              </Paper>
             </Box>
           </Grid>
         </Grid>

@@ -60,7 +60,7 @@ export default function EvaluacionPsicologicaActual() {
                                             Historial completo:
                                         </Typography>
                                         {data.items.map((detailItem, detailIndex) => (
-                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1, bgcolor: 'grey.50' }}>
+                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1 }}>
                                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
                                                     <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
                                                         {detailItem.valor}
@@ -114,7 +114,7 @@ export default function EvaluacionPsicologicaActual() {
                                             Historial completo:
                                         </Typography>
                                         {data.items.map((detailItem, detailIndex) => (
-                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1, bgcolor: 'grey.50' }}>
+                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1 }}>
                                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
                                                     <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
                                                         {detailItem.valor}
@@ -170,7 +170,7 @@ export default function EvaluacionPsicologicaActual() {
                                             Historial completo:
                                         </Typography>
                                         {data.items.map((detailItem, detailIndex) => (
-                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1, bgcolor: 'grey.50' }}>
+                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1 }}>
                                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
                                                     <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
                                                         {detailItem.valor}
@@ -227,7 +227,7 @@ export default function EvaluacionPsicologicaActual() {
                                             Historial completo:
                                         </Typography>
                                         {item.items.map((detailItem, detailIndex) => (
-                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1, bgcolor: 'grey.50' }}>
+                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1 }}>
                                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
                                                     <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
                                                         {detailItem.evaluacion}
@@ -290,7 +290,7 @@ export default function EvaluacionPsicologicaActual() {
                                             Historial completo:
                                         </Typography>
                                         {item.items.map((detailItem, detailIndex) => (
-                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1, bgcolor: 'grey.50' }}>
+                                            <Box key={detailIndex} sx={{ mb: 1.5, p: 1, borderRadius: 1 }}>
                                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
                                                     <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
                                                         {detailItem.estado}
